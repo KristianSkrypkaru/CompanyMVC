@@ -1,14 +1,22 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Company.Service;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Company
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
+        
         [Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
+            Configuration.Bind("Project", new Config());
+
+            services.AddControllersWithViews()
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                    .AddSessionStateTempDataProvider();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

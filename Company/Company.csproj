@@ -14,9 +14,7 @@
   <ItemGroup>
     <Folder Include="Areas\Controllers\" />
     <Folder Include="Areas\Views\" />
-    <Folder Include="Domain\" />
     <Folder Include="Models\ViewComponents\" />
-    <Folder Include="Service\" />
   </ItemGroup>
 
   <ItemGroup>
